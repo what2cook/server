@@ -1,4 +1,4 @@
-package com.what2cook.what2cook.domain.recipes;
+package com.what2cook.what2cook.domain.recipe;
 
 import lombok.Builder;
 import lombok.Getter;

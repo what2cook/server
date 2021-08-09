@@ -1,4 +1,4 @@
-package com.what2cook.what2cook.domain.recipes;
+package com.what2cook.what2cook.domain.recipe;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
