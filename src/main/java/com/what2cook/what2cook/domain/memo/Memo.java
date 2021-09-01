@@ -1,13 +1,11 @@
 package com.what2cook.what2cook.domain.memo;
 
+import com.what2cook.what2cook.domain.recipe.Recipe;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
@@ -16,17 +14,20 @@ public class Memo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer memoId;
+    private Integer id;
 
     private Integer userId;
-    private Integer recipeId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="RECIPE_ID", referencedColumnName = "ID")
+    private Recipe recipe;
 
     private String content;
 
     @Builder
-    public Memo(Integer userId, Integer recipeId, String content) {
+    public Memo(Integer userId, Recipe recipe, String content) {
         this.userId = userId;
-        this.recipeId = recipeId;
+        this.recipe = recipe;
         this.content = content;
     }
 
