@@ -34,7 +34,7 @@ public class RecipeRepositoryTest {
         String qnt = "qnt1";
         Integer level = 1;
         String imgUrl = "url1";
-        String detUrl = "url11";
+
 
         recipeRepository.save(Recipe.builder()
                 .name(name)
@@ -45,7 +45,6 @@ public class RecipeRepositoryTest {
                 .qnt(qnt)
                 .level(level)
                 .imgUrl(imgUrl)
-                .detUrl(detUrl)
                 .build());
 
         List<Recipe> recipeList = recipeRepository.findAll();

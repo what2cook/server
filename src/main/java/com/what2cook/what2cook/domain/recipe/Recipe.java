@@ -13,7 +13,8 @@ public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recipeId;
+    @Column(name = "ID")
+    private Integer id;
 
     private String name;
     private String summary;
@@ -23,11 +24,11 @@ public class Recipe {
     private String qnt;
     private Integer level;
     private String imgUrl;
-    private String detUrl;
 
     @Builder
-    public Recipe(String name, String summary, String nation, String type, String time, String qnt,
-                  Integer level, String imgUrl, String detUrl){
+    public Recipe(Integer id, String name, String summary, String nation, String type, String time, String qnt,
+                  Integer level, String imgUrl){
+        this.id = id;
         this.name = name;
         this.summary = summary;
         this.nation = nation;
@@ -36,7 +37,6 @@ public class Recipe {
         this.qnt = qnt;
         this.level = level;
         this.imgUrl = imgUrl;
-        this.detUrl = detUrl;
     }
 
 }
