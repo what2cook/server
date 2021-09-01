@@ -1,5 +1,6 @@
 package com.what2cook.what2cook.web;
 
+import com.what2cook.what2cook.domain.memo.Memo;
 import com.what2cook.what2cook.service.memo.MemoService;
 import com.what2cook.what2cook.web.dto.MemoResponseDto;
 import com.what2cook.what2cook.web.dto.MemoSaveRequestDto;
@@ -7,13 +8,15 @@ import com.what2cook.what2cook.web.dto.MemoUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+
 @RequiredArgsConstructor
 @RestController
 public class MemoApiController {
     private final MemoService memoService;
 
     @PostMapping("/api/v1/memo")
-    public Integer save(@RequestBody MemoSaveRequestDto requestDto) {
+    public Memo save(@RequestBody MemoSaveRequestDto requestDto) {
+        System.out.println("controller.save 호출");
         return memoService.save(requestDto);
     }
 

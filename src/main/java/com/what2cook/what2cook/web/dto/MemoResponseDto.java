@@ -11,9 +11,9 @@ public class MemoResponseDto {
     private final String content;
 
     public MemoResponseDto(Memo entity) {
-        this.memoId = entity.getMemoId();
+        this.memoId = entity.getId();
         this.userId = entity.getUserId();
-        this.recipeId = entity.getRecipeId();
+        this.recipeId = entity.getRecipe().getId();
         this.content = entity.getContent();
     }
 }

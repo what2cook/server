@@ -1,6 +1,7 @@
 package com.what2cook.what2cook.web.dto;
 
 import com.what2cook.what2cook.domain.memo.Memo;
+import com.what2cook.what2cook.domain.recipe.Recipe;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +20,10 @@ public class MemoSaveRequestDto {
         this.content = content;
     }
 
-    public Memo toEntity() {
+    public Memo toEntity(Recipe recipe) {
         return Memo.builder()
                 .userId(userId)
-                .recipeId(recipeId)
+                .recipe(recipe)
                 .content(content)
                 .build();
     }
