@@ -1,5 +1,6 @@
 package com.what2cook.what2cook.web.dto;
 
+import com.what2cook.what2cook.domain.recipe.Recipe;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -14,4 +15,13 @@ public class RecipeResponseDto {
     private final String qnt;
     private final int level;
 
+    public RecipeResponseDto(Recipe entity) {
+        this.name = entity.getName();
+        this.summary = entity.getSummary();
+        this.nation = entity.getNation();
+        this.type = entity.getType();
+        this.time = entity.getTime();
+        this.qnt = entity.getQnt();
+        this.level = entity.getLevel();
+    }
 }
