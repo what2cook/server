@@ -14,6 +14,7 @@ public class RecipeResponseDto {
     private final String time;
     private final String qnt;
     private final int level;
+    private final String img_url;
 
     public RecipeResponseDto(Recipe entity) {
         this.name = entity.getName();
@@ -23,5 +24,6 @@ public class RecipeResponseDto {
         this.time = entity.getTime();
         this.qnt = entity.getQnt();
         this.level = entity.getLevel();
+        this.img_url = entity.getImgUrl();
     }
 }
