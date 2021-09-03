@@ -2,6 +2,7 @@ package com.what2cook.what2cook.web;
 
 
 import com.what2cook.what2cook.service.recipe.RecipeService;
+import com.what2cook.what2cook.web.dto.RecipeDetailResponseDto;
 import com.what2cook.what2cook.web.dto.RecipeResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,5 +17,10 @@ public class RecipeApiController {
     @GetMapping("/api/v1/recipe/{recipeId}")
     public RecipeResponseDto findById(@PathVariable("recipeId") Integer recipeId) {
         return recipeService.findById(recipeId);
+    }
+
+    @GetMapping("/api/v1/recipe/detail/{recipeId}")
+    public RecipeDetailResponseDto findDetailById(@PathVariable("recipeId") Integer recipeId) {
+        return recipeService.findDetailById(recipeId);
     }
 }

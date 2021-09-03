@@ -2,13 +2,15 @@ package com.what2cook.what2cook.web;
 
 import com.what2cook.what2cook.domain.recipe.Recipe;
 import com.what2cook.what2cook.domain.recipe.RecipeRepository;
-import org.junit.jupiter.api.AfterEach;
+import com.what2cook.what2cook.web.dto.RecipeDetailResponseDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
@@ -40,4 +42,23 @@ public class RecipeApiControllerTest {
         assertThat(recipe1.getName()).isEqualTo("나물비빔밥");
     }
 
+    @Test
+    public void recipeDetail을_불러온다() throws Exception{
+
+        int target_id = 2;
+
+        String url = "http://localhost:" + port + "/api/v1/recipe/detail/" + target_id;
+
+        ResponseEntity<RecipeDetailResponseDto> responseEntity = restTemplate.getForEntity(url, RecipeDetailResponseDto.class);
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+        assertThat(responseEntity.getBody().getName()).isEqualTo("오곡밥");
+        List<String> details = responseEntity.getBody().getDetail();
+
+        for (String s : details) {
+            System.out.println(s);
+        }
+    }
 }
