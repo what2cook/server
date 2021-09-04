@@ -1,10 +1,11 @@
 HELP.md
-!**/src/main/resources/application-oauth.properties
-.gradle
+**/src/main/resources/application-oauth.properties
+*.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+*.csv
 
 ### STS ###
 .apt_generated
