@@ -12,7 +12,7 @@ public class MemoResponseDto {
 
     public MemoResponseDto(Memo entity) {
         this.memoId = entity.getId();
-        this.userId = entity.getUserId();
+        this.userId = entity.getUser().getId();
         this.recipeId = entity.getRecipe().getId();
         this.content = entity.getContent();
     }
