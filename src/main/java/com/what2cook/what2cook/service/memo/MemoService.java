@@ -23,10 +23,14 @@ public class MemoService {
     private final UserRepository userRepository;
 
     @Transactional
-    public Memo save(MemoSaveRequestDto requestDto) {
-        Recipe recipe =  recipeRepository.findById(requestDto.getRecipeId()).orElseThrow(() -> new IllegalArgumentException("해당 레시피가 없습니다. ID = " + requestDto.getRecipeId()));
-        User user = userRepository.findById(requestDto.getUserId()).orElseThrow(() -> new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ID = " + requestDto.getUserId()));
-        return memoRepository.save(requestDto.toEntity(recipe, user));
+    public Memo save(Integer userId, Integer recipeId, String content) {
+        Recipe recipe = recipeRepository.findById(recipeId).orElseThrow(() -> new IllegalArgumentException("해당 레시피가 없습니다. ID = " + recipeId));
+        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 유저를 찾을 수 없습니다. ID = " + userId));
+        return memoRepository.save(Memo.builder()
+                .user(user)
+                .recipe(recipe)
+                .content(content)
+                .build());
     }
 
     @Transactional

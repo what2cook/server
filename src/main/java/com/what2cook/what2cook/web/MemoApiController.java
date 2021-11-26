@@ -6,6 +6,7 @@ import com.what2cook.what2cook.web.dto.MemoResponseDto;
 import com.what2cook.what2cook.web.dto.MemoSaveRequestDto;
 import com.what2cook.what2cook.web.dto.MemoUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,9 +16,9 @@ public class MemoApiController {
     private final MemoService memoService;
 
     @PostMapping("/api/v1/memo")
-    public Memo save(@RequestBody MemoSaveRequestDto requestDto) {
+    public ResponseEntity<Memo> save(@RequestBody MemoSaveRequestDto requestDto) {
         System.out.println("controller.save 호출");
-        return memoService.save(requestDto);
+        return ResponseEntity.ok(memoService.save(requestDto.getUserId(), requestDto.getRecipeId(), requestDto.getContent()));
     }
 
     @PutMapping("/api/v1/memo/{memoId}")
