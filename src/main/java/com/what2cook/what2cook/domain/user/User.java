@@ -24,16 +24,12 @@ public class User extends BaseTimeEntity {
 
     private String ingredBit;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
 
     @Builder
-    public User(String name, String email, String ingredBit, Role role) {
+    public User(String name, String email, String ingredBit) {
         this.name = name;
         this.email = email;
         this.ingredBit = ingredBit;
-        this.role = role;
     }
 
     public User update(String name, String ingredBit) {
@@ -43,8 +39,5 @@ public class User extends BaseTimeEntity {
         return this;
     }
 
-    public String getRoleKey() {
-        return this.role.getKey();
-    }
 
 }
