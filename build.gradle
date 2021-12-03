@@ -1,0 +1,47 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.what2cook'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// lombok
+	implementation('org.projectlombok:lombok')
+	implementation 'org.jetbrains:annotations:20.1.0'
+	annotationProcessor('org.projectlombok:lombok')
+	testImplementation('org.projectlombok:lombok')
+	testAnnotationProcessor('org.projectlombok:lombok')
+
+	implementation('mysql:mysql-connector-java')
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation("org.mariadb.jdbc:mariadb-java-client")
+	implementation('com.h2database:h2')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+	//implementation('org.springframework.boot:spring-boot-starter-oauth2-client') // 권한 관련
+//	implementation('org.springframework.session:spring-session-jdbc') // 권한 관련
+//
+//	testImplementation('org.springframework.boot:spring-boot-starter-test')
+//	testImplementation("org.springframework.security:spring-security-test") // 권한 관련
+}
+
+test {
+	useJUnitPlatform()
+}
